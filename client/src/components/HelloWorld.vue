@@ -2,6 +2,7 @@
   <div>
     <h1>Hello World</h1>
     <router-link to="/impressum">Impressum</router-link>
+    <router-link to="/interactive">Interactive</router-link>
   </div>
 </template>
 

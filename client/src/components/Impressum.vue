@@ -6,8 +6,10 @@
       <p>Lobortis mattis aliquam faucibus purus in massa. Magna etiam tempor orci eu lobortis elementum. Morbi tristique senectus et netus et malesuada fames ac turpis. Consequat id porta nibh venenatis. Ultrices sagittis orci a scelerisque purus semper eget. Cursus turpis massa tincidunt dui ut ornare lectus. Felis eget velit aliquet sagittis. Felis donec et odio pellentesque. Non tellus orci ac auctor augue mauris. Lobortis scelerisque fermentum dui faucibus in ornare quam. Turpis cursus in hac habitasse platea.</p>
     </div>
     <ul>
-      <li v-for="contact in contacts" :key="contact">
-        {{ contact }}
+      <li v-for="contact in contacts" :key="contact.name">
+        <contact-link :name="contact.name" :email="contact.email">
+          <button>Test</button>
+        </contact-link>
       </li>
     </ul>
     <router-link to="/">HelloWorld</router-link>
@@ -15,6 +17,8 @@
 </template>
 
 <script>
+import ContactLink from './ContactLink.vue'
+
 export default {
   name: 'Impressum',
   data () {
@@ -22,11 +26,16 @@ export default {
       headline: 'Impressum',
       showText: true,
       contacts: [
-        'Max Mustermann',
-        'Tobias',
-        'Ernie & Bert'
+        {
+          name: 'Max Mustermann',
+          email: 'max@mustermann.de',
+          job: 'Entwickler'
+        }
       ]
     }
+  },
+  components: {
+    ContactLink
   }
 }
 </script>
