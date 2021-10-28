@@ -12,6 +12,9 @@
       <option value="three">3</option>
     </select>
     <p>{{ selectedOption }}</p>
+    <br>
+    <input type="text" v-model="loginUsername" placeholder="Username">
+    <button @click="onClickLogin">Login</button>
   </div>
 </template>
 
@@ -22,7 +25,8 @@ export default {
     return {
       counter: 0,
       buttonsActive: true,
-      selectedOption: ''
+      selectedOption: '',
+      loginUsername: ''
     }
   },
   methods: {
@@ -35,6 +39,9 @@ export default {
       if (this.buttonsActive) {
         this.counter = 0
       }
+    },
+    onClickLogin () {
+      this.$store.dispatch('setUsername', this.loginUsername)
     }
   }
 }
