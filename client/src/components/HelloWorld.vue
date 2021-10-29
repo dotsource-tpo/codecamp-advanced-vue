@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Hello{{ username ? " " + username : "!" }}</h1>
+    <h1>Hello{{ userName ? " " + userName : "!" }}</h1>
     <router-link to="/impressum">Impressum</router-link>
     <router-link to="/interactive">Interactive</router-link>
   </div>
@@ -15,8 +15,8 @@ export default {
     }
   },
   computed: {
-    username () {
-      return this.$store.state.username
+    userName () {
+      return this.$store.state.userName
     }
   }
 }

@@ -41,7 +41,7 @@ export default {
       }
     },
     onClickLogin () {
-      this.$store.dispatch('setUsername', this.loginUsername)
+      this.$store.dispatch('setUserName', this.loginUsername)
     }
   }
 }
