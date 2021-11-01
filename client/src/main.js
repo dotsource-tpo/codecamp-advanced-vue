@@ -11,16 +11,16 @@ Vue.use(Vuex)
 /* eslint-disable no-new */
 const store = new Vuex.Store({
   state: {
-    isLoggedIn: false,
+    isSignedIn: false,
     userId: undefined,
     userName: undefined
   },
   mutations: {
-    setLoggedIn (state) {
-      state.isLoggedIn = true
+    setSignedIn (state) {
+      state.isSignedIn = true
     },
-    setLoggedOut (state) {
-      state.isLoggedIn = false
+    setSignedOut (state) {
+      state.isSignedIn = false
     },
     setUserId (state, userId) {
       state.userId = userId
@@ -31,12 +31,12 @@ const store = new Vuex.Store({
   },
   actions: {
     LogIn (context, user) {
-      context.commit('setLoggedIn')
+      context.commit('setSignedIn')
       context.commit('setUserId', user.id)
       context.commit('setUserName', user.name)
     },
     LogOut (context) {
-      context.commit('setLoggedOut')
+      context.commit('setSignedOut')
       context.commit('setUserId', undefined)
       context.commit('setUserName', undefined)
     }
