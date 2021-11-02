@@ -1,7 +1,7 @@
 const express = require('express')
 const { MongoClient } = require('mongodb')
 const BlogController = require('./controllers/blogController.js')
-const config = require('./config/config')
+const config = require('./config/local.json')
 
 const app = express()
 const dbClient = new MongoClient(config.connectString)
