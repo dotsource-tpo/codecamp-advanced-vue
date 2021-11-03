@@ -13,10 +13,20 @@ app.use((req, res, next) => {
   next()
 })
 
+app.use(express.json())
+
 app.get('/articles', async (req, res) => {
   try {
     res.send(await blogController.getAll())
   } catch (err) {
+    res.status(500).body('Internal Error')
+  }
+})
+
+app.post('/articles/add', async (req, res) => {
+  if (await blogController.insertOne(req.body)) {
+    res.status(201).send()
+  } else {
     res.status(500).body('Internal Error')
   }
 })
