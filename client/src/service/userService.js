@@ -1,4 +1,4 @@
-import store from '../main'
+import app from '../main'
 
 export default {
   LogIn (userName, password) {
@@ -6,17 +6,20 @@ export default {
 
     if (userName === 'admin' && password === 'admin') {
       userId = 1
-      store.dispatch('LogIn', { id: userId, name: userName })
+      app.$store.dispatch('LogIn', { id: userId, name: userName })
+      app.$cookies.set('user', { id: userId, name: userName }, '5min')
       return true
     } else if (userName === 'guest' && password === 'guest') {
       userId = 2
-      store.dispatch('LogIn', { id: userId, name: userName })
+      app.$store.dispatch('LogIn', { id: userId, name: userName })
+      app.$cookies.set('user', { id: userId, name: userName }, '5min')
       return true
     }
 
     return false
   },
   LogOut () {
-    store.dispatch('LogOut')
+    app.$store.dispatch('LogOut')
+    app.$cookies.remove('user')
   }
 }

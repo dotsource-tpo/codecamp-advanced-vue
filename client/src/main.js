@@ -2,11 +2,13 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VueCookies from 'vue-cookies'
 import App from './App'
 import router from './router'
 
 Vue.config.productionTip = false
 Vue.use(Vuex)
+Vue.use(VueCookies)
 
 /* eslint-disable no-new */
 const store = new Vuex.Store({
@@ -44,12 +46,19 @@ const store = new Vuex.Store({
 })
 
 /* eslint-disable no-new */
-new Vue({
+const app = new Vue({
   el: '#app',
   router,
   store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  created () {
+    const user = this.$cookies.get('user')
+
+    if (user) {
+      this.$store.dispatch('LogIn', user)
+    }
+  }
 })
 
-export default store
+export default app

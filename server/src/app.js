@@ -23,6 +23,10 @@ app.get('/articles', async (req, res) => {
   }
 })
 
+app.get('/articles/find', async (req, res) => {
+  res.send(await blogController.findById(req.query.id))
+})
+
 app.post('/articles/add', async (req, res) => {
   if (await blogController.insertOne(req.body)) {
     res.status(201).send()

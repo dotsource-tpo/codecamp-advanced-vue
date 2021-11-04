@@ -1,6 +1,8 @@
 <template>
   <main>
-    <blog-article v-for="item in items" :key="item.id" :title="item.title" :date="item.date" :author="item.author" :content="item.content"/>
+    <blog-article v-for="item in items" :key="item._id"
+      :article="item"
+      :isPreview="true"/>
   </main>
 </template>
 

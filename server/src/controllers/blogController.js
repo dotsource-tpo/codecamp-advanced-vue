@@ -1,3 +1,5 @@
+const ObjectID = require('bson').ObjectID
+
 class BlogController {
   constructor (_client) {
     this.client = _client
@@ -9,6 +11,20 @@ class BlogController {
       await this.client.connect()
 
       const result = await this.collection.find({}).toArray()
+
+      await this.client.close()
+
+      return result
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  async findById(id) {
+    try {
+      await this.client.connect()
+
+      const result = await this.collection.findOne(new ObjectID(id))
 
       await this.client.close()
 
